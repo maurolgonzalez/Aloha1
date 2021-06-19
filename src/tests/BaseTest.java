@@ -43,6 +43,10 @@ public abstract class BaseTest {
         System.setOut(System.out);
     }
 
+    private String getArrayString(String[] array) {
+        return String.join("\n", array);
+    }
+
     protected void runTest(String[] input, String[] expectedOutput) throws Exception {
 
         provideInput(String.join("", input));
@@ -52,7 +56,8 @@ public abstract class BaseTest {
 
         String[] arrOut = output.trim().split("\\n");
 
-        assertEquals("Different length of output\n", expectedOutput.length, arrOut.length);
+        assertEquals("Different length of output. Current output:\n" + getArrayString(arrOut) + "\n",
+                    expectedOutput.length, arrOut.length);
 
         for (int i=0; i < arrOut.length; i++) {
             assertEquals("Bad output in pos [" + i + "]:\n",
@@ -61,4 +66,6 @@ public abstract class BaseTest {
         }
 
     }
+
+    
 }
