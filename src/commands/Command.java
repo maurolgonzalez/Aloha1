@@ -3,8 +3,6 @@ package commands;
 
 public abstract class Command {
 
-    public static final String REMOVE = "REMOVE";
-
     private String[] cmdLine;
 
     protected Command(String[] cmdLine) {

@@ -9,6 +9,7 @@ import java.io.PrintStream;
 import org.junit.After;
 import org.junit.Before;
 
+import controller.ComponentController;
 import main.Main;
 
 
@@ -25,6 +26,11 @@ public abstract class BaseTest {
         testOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(testOut));
         
+    }
+
+    @Before
+    public void clearController() {
+        ComponentController.getInstance().clear();
     }
 
     protected void provideInput(String data) {
@@ -60,7 +66,7 @@ public abstract class BaseTest {
                     expectedOutput.length, arrOut.length);
 
         for (int i=0; i < arrOut.length; i++) {
-            assertEquals("Bad output in pos [" + i + "]:\n",
+            assertEquals("Bad output in pos [" + i + "]. Complete output:\n" + getArrayString(arrOut) + "\n",
                             expectedOutput[i].trim(), arrOut[i].trim());
 
         }

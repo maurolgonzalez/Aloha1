@@ -16,7 +16,12 @@ public class InvokerCommand {
             command = new CmdInstall(cmdList);
         } else if (cmdList.length == 1 && cmdList[0].compareTo(CmdEnd.NAME) == 0) {
             command = new CmdEnd(cmdList);
+        } else if (cmdList.length == 1 && cmdList[0].compareTo(CmdList.NAME) == 0) {
+            command = new CmdList(cmdList);
+        } else if (cmdList.length == 2 && cmdList[0].compareTo(CmdRemove.NAME) == 0) {
+            command = new CmdRemove(cmdList);
         } else {
+            System.out.println("ERROR: Not recognized command: " + cmdLine);
             return false;
         }
 

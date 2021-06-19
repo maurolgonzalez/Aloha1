@@ -14,7 +14,7 @@ public class CmdDepend extends Command {
     public boolean execute() {
         super.echo();
 
-        ComponentController.getInstance().createDepend(getCmdLine());
+        ComponentController.getInstance().createDepend(super.getCmdLine());
 
         return false;
     }

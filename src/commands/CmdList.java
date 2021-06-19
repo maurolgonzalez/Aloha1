@@ -13,7 +13,7 @@ public class CmdList extends Command {
     public boolean execute() {
         super.echo();
         
-        ComponentController.getInstance().listComponents(getCmdLine());
+        ComponentController.getInstance().listInstalledComponents();
         
         return false;
     }   

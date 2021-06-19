@@ -14,7 +14,7 @@ public class CmdInstall extends Command {
     public boolean execute() {
         super.echo();
         
-        ComponentController.getInstance().installDepend(getCmdLine());
+        ComponentController.getInstance().installComponent(super.getCmdLine());
         
         return false;
     }

@@ -6,15 +6,29 @@ public class Component {
     
     String name;
     boolean installed;
+    boolean explicityInstalled;
     ArrayList<Component> dependencies = new ArrayList<>();
 
     public Component(String name) {
         this.name = name;
         installed = false;
+        explicityInstalled = false;
+    }
+
+    public boolean isExplicityInstalled() {
+        return explicityInstalled;
+    }
+
+    public void setExplicityInstalled(boolean explicityInstalled) {
+        this.explicityInstalled = explicityInstalled;
     }
 
     public boolean hasDependency(Component other) {
         return dependencies.contains(other);
+    }
+
+    public ArrayList<Component> getDependencies() {
+        return dependencies;
     }
 
     @Override
@@ -40,6 +54,11 @@ public class Component {
         return name;
     }
 
+    public void explicitlyInstall() {
+        explicityInstalled = true;
+        install();
+    }
+
     public void install() {
         if(!installed) {
             for(Component currentDep: dependencies) {
@@ -49,5 +68,37 @@ public class Component {
             System.out.println("Installing " + name);
             installed = true;
         }
+    }
+
+    public void printInstalled() {
+        if(installed) {
+            for(Component currentDep: dependencies) {
+                currentDep.printInstalled();
+            }
+
+            System.out.println(name);
+        }
+    }
+
+    public void remove() {
+        if(installed) {
+            for(Component currentDep: dependencies) {
+                currentDep.remove();
+            }
+
+            System.out.println("Removing " + name);
+            installed = false;
+        } else {
+            System.out.println(name + " is not installed");
+        }
+    }
+
+    public void explicityRemove() {
+        if(!installed) {
+            System.out.println(name + " is not installed");
+            return;
+        }
+
+        remove();
     }
 }

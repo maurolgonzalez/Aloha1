@@ -13,7 +13,7 @@ public class CmdRemove extends Command{
     public boolean execute() {
         super.echo();
         
-        ComponentController.getInstance().removeComponent(getCmdLine());
+        ComponentController.getInstance().removeComponent(super.getCmdLine());
         
         return false;
     }

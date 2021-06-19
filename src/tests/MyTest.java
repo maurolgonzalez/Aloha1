@@ -6,12 +6,13 @@ import org.junit.Test;
  * Tests created by me
  */
 public class MyTest extends BaseTest {
-    
+
     @Test
-    public void testSimpleInstall() throws Exception {
+    public void testSimpleList() throws Exception {
         String[] input =  { "DEPEND TELNET TCPIP NETCARD\n",
                             "DEPEND TCPIP NETCARD\n",
                             "INSTALL TELNET\n",
+                            "LIST\n",
                             "END\n",
                             };
         
@@ -22,6 +23,10 @@ public class MyTest extends BaseTest {
                                         "Installing NETCARD\n",
                                         "Installing TCPIP\n",
                                         "Installing TELNET\n",
+                                        "LIST\n",
+                                        "NETCARD\n",
+                                        "TCPIP\n",
+                                        "TELNET\n",
                                         "END\n",
                                         };
 
@@ -49,4 +54,6 @@ public class MyTest extends BaseTest {
 
         runTest(input, expectedOutput);
     }
+
+    
 }
