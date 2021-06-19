@@ -53,7 +53,7 @@ public abstract class BaseTest {
         return String.join("\n", array);
     }
 
-    protected void runTest(String[] input, String[] expectedOutput) throws Exception {
+    protected void runTest(String[] input, String[] expectedOutput) {
 
         provideInput(String.join("", input));
 

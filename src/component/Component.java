@@ -7,20 +7,14 @@ public class Component {
     String name;
     boolean installed;
     boolean explicityInstalled;
+    int dependantCount;
     ArrayList<Component> dependencies = new ArrayList<>();
 
     public Component(String name) {
         this.name = name;
         installed = false;
         explicityInstalled = false;
-    }
-
-    public boolean isExplicityInstalled() {
-        return explicityInstalled;
-    }
-
-    public void setExplicityInstalled(boolean explicityInstalled) {
-        this.explicityInstalled = explicityInstalled;
+        dependantCount = 0;
     }
 
     public boolean hasDependency(Component other) {
@@ -44,19 +38,31 @@ public class Component {
         return this.name.compareTo(otherComp.name) == 0;
     }
 
+    @Override
+    public final int hashCode() {
+        return name.hashCode();
+    }
+
 
     public void addDependency(Component compDep) {
         dependencies.add(0, compDep);
-        
+        compDep.dependantCount++;
     }
 
     public String getName() {
         return name;
     }
 
-    public void explicitlyInstall() {
-        explicityInstalled = true;
-        install();
+    public boolean explicitlyInstall() {
+        if(!installed) {
+            explicityInstalled = true;
+            install();
+            return true;
+        } else {
+            System.out.println(name + " is already installed");
+        }
+
+        return false;
     }
 
     public void install() {
@@ -81,12 +87,16 @@ public class Component {
     }
 
     public void remove() {
+        
+        if(dependantCount > 0)
+            return;
+            
         if(installed) {
-            for(Component currentDep: dependencies) {
+           for(Component currentDep: dependencies) {
                 currentDep.remove();
             }
 
-            System.out.println("Removing " + name);
+            System.out.println("Removing " + name);            
             installed = false;
         } else {
             System.out.println(name + " is not installed");
@@ -100,5 +110,9 @@ public class Component {
         }
 
         remove();
+    }
+
+    public void reduceDependantCount() {
+        dependantCount--;
     }
 }

@@ -20,7 +20,6 @@ public class RemoveTest extends BaseTest {
                                         "Installing TCPIP\n",
                                         "Installing TELNET\n",
                                         "REMOVE TELNET\n",
-                                        "Removing TCPIP\n",
                                         "Removing TELNET\n",
                                         "END\n",
                                         };

@@ -44,6 +44,7 @@ public class InstallTest extends BaseTest {
                                         "Installing TCPIP\n",
                                         "Installing TELNET\n",
                                         "INSTALL NETCARD\n",
+                                        "NETCARD is already installed\n",
                                         "END\n",
                                         };
 
@@ -82,6 +83,7 @@ public class InstallTest extends BaseTest {
                                         "Installing TCPIP\n",
                                         "Installing TELNET\n",
                                         "INSTALL TELNET\n",
+                                        "TELNET is already installed\n",
                                         "END\n",
                                         };
 

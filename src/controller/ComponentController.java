@@ -44,7 +44,6 @@ public class ComponentController {
                         compDep = new Component(cmdLine[i]);
                         addToDependList(compDep);
                     }
-                    //Component newCompDep = new Component(cmdLine[i]);
                     newMainComponent.addDependency(compDep);
                     
                 }
@@ -111,7 +110,9 @@ public class ComponentController {
         if(componentToRemove != null) {
             if(!isUsedByComponent(componentToRemove)) {
                 componentToRemove.explicityRemove();
+                installedComponents.remove(componentToRemove);
             } else {
+                componentToRemove.reduceDependantCount();
                 System.out.println(componentToRemove.getName() + " is still needed");
             }
         } else {

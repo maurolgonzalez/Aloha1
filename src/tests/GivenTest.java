@@ -73,7 +73,7 @@ public class GivenTest extends BaseTest {
                                         "NETCARD is already installed\n",
                                         "REMOVE TCPIP\n",
                                         "TCPIP is still needed\n",
-                                        "REMOVE BROWSER\n",
+                                        "REMOVE BROWSER\n", // TODO: Cannot resolve the remove of dependencies correctly
                                         "Removing BROWSER\n",
                                         "Removing TCPIP\n",
                                         "Removing HTML\n",

@@ -17,8 +17,7 @@ public abstract class Command {
 
     @Override
     public String toString() {
-        String result = String.join(" ", cmdLine);
-        return result;
+        return String.join(" ", cmdLine);
     }
 
     protected String[] getCmdLine() {

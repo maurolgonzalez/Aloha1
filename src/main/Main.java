@@ -3,7 +3,6 @@ package main;
 import java.util.Scanner;
 
 import commands.CmdEnd;
-import commands.Command;
 import commands.InvokerCommand;
 
 public class Main {
